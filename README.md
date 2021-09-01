@@ -1,2 +1,3 @@
-# RunningExternalPrograms
-Running External Programs from The Julia Programming Language
+# RunningExternalPrograms <img alt="Windows" src="https://img.shields.io/badge/Windows-00599C?style=flat&logo=windows&logoColor=white"/> <img alt="Jupyter Notebook" src="https://img.shields.io/badge/Jupyter%20Notebook-FA0F00.svg?style=flat&logo=jupyter&logoColor=white"/> <img alt="Fortran" src="https://img.shields.io/static/v1?style=flat&message=Fortran&color=734F96&logo=Fortran&logoColor=FFFFFF&label="/> <img alt="Julia" src="https://img.shields.io/badge/Julia-9558B2?style=flat&logo=julia&logoColor=white"/>
+
+read <a href="https://github.com/ohno/RunningExternalPrograms/blob/main/RunningExternalPrograms.ipynb"><img src="https://img.shields.io/badge/-GitHub-181717.svg?logo=github&style=flat"></a> or <a href="https://zenn.dev/ohno/articles/a922710b53ea02"><img src="https://img.shields.io/badge/Zenn-3EA8FF.svg?logo=Zenn&style=flat&logoColor=white"></a>
