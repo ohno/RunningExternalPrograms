@@ -259,7 +259,7 @@ y = f([5,13])
 
 ## 外部プログラムのパラメータ最適化
 
-ここでは[Optim.jl](https://github.com/JuliaNLSolvers/Optim.jl)を利用します. 事前に[パッケージモード](https://qiita.com/skiing_LAL10/items/0c0132a34629fbc8a91f)で`add Optim`を実行してインストールし, ノート上では`using Optim`を宣言しておく必要があります. まず, [Nelder,Mead(1965)](https://doi.org/10.1093/comjnl/7.4.308)で[Rosenbrock関数](https://en.wikipedia.org/wiki/Rosenbrock_function)を最小化する例を見てみましょう.
+ここでは[Optim.jl](https://github.com/JuliaNLSolvers/Optim.jl)を利用します. 事前に[パッケージモード](https://qiita.com/skiing_LAL10/items/0c0132a34629fbc8a91f)で`add Optim`を実行してインストールし, ノート上では`using Optim`を宣言しておく必要があります. まず, [Rosenbrock関数](https://en.wikipedia.org/wiki/Rosenbrock_function)を最小化する例を見てみましょう.
 
 ```julia
 # using Pkg
@@ -268,9 +268,9 @@ using Optim
 ```
 
 ```julia
-rosenblock_julia(x) = (1.0 - x[1])^2 + 100.0 * (x[2] - x[1]^2)^2
+rosenbrock_julia(x) = (1.0 - x[1])^2 + 100.0 * (x[2] - x[1]^2)^2
 x0 = [0.0, 0.0]
-opt = optimize(rosenblock_julia, x0, NelderMead())
+opt = optimize(rosenbrock_julia, x0)
 
 println(Optim.minimizer(opt))
 println(Optim.minimum(opt))
@@ -278,7 +278,7 @@ println(Optim.minimum(opt))
     [0.9999634355313174, 0.9999315506115275]
     3.5255270584829996e-9
     
-次の`program4.f90`は標準入力から変数$x,y$を受け取っての値を標準出力に返す例です. このプログラムをコンパイルした`program4.exe`をJuliaの関数としての扱い, $x,y$を最適化します.
+次の`program4.f90`は標準入力から変数$x,y$を受け取ってRosenbrock関数の値を標準出力に返す例です. このプログラムをコンパイルした`program4.exe`をJuliaの関数としての扱い, $x,y$を最適化します.
 
 `program4.f90`
 ```fortran
@@ -291,9 +291,9 @@ end program main
 ```
 
 ```julia
-rosenblock_fortran(x) = parse(Float64,readchomp(pipeline(`program4.exe`, stdin=`cmd /C echo $x`)))
+rosenbrock_fortran(x) = parse(Float64,readchomp(pipeline(`program4.exe`, stdin=`cmd /C echo $x`)))
 x0 = [0.0, 0.0]
-opt = optimize(rosenblock_fortran, x0)
+opt = optimize(rosenbrock_fortran, x0)
 
 println(Optim.minimizer(opt))
 println(Optim.minimum(opt))
